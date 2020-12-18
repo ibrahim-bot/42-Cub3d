@@ -1,0 +1,17 @@
+R   800   600
+
+NO    ./xpm/brick.xpm
+SO    ./xpm/wood.xpm
+WE      ./xpm/metal.xpm
+EA  ./xpm/stone.xpm
+
+S    ./xpm/eye.xpm
+
+F 11, 10, 10
+C 48, 169, 243  
+
+111111
+10S101
+102001
+110001
+111111
