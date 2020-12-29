@@ -1,20 +1,17 @@
-R      800      600   
+R 800 600   
 
-NO           ./xpm/wood.xpm
+NO ./xpm/wood.xpm
+WE ./xpm/stone.xpm
+SO ./xpm/metal.xpm
+EA ./xpm/brick.xpm
 
-WE       ./xpm/stone.xpm
+S ./xpm/eye.xpm
+F 119,128,123     
+C 48,16,243     
 
-SO                                               ./xpm/metal.xpm
-
-EA  ./xpm/brick.xpm
-
-S    ./xpm/eye.xpm
-
-F   119, 128, 123     
-
-C   48, 16, 243     
-
-
- 11111111111
-10N011
-1111111
+      11111
+     1000001
+    100111001
+   1001   1001
+  1N01111111001
+ 1111       1111

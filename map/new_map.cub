@@ -1,17 +1,15 @@
-R     1920     1080
+R 1920 1080
+NO ./xpm/brick.xpm
+SO ./xpm/wood.xpm
+WE ./xpm/metal.xpm
+EA ./xpm/stone.xpm
 
-NO    ./xpm/brick.xpm
-SO    ./xpm/wood.xpm
-WE      ./xpm/metal.xpm
-EA  ./xpm/stone.xpm
-
-S    ./xpm/eye.xpm
-
+S ./xpm/eye.xpm
 F 220,100,0
 C 225,30,0
 
-        11111111111111 11111111111
-        1000000000110010000000001
+        1111111111111111111111111
+        1000000000110000000000001
         1011000001110000002000001
         1001000000000000000000001
 111111111011000001110000000000001

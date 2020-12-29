@@ -6,7 +6,7 @@
 #    By: ichougra <ichougra@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:55:03 by ichougra          #+#    #+#              #
-#    Updated: 2020/12/18 12:56:22 by ichougra         ###   ########lyon.fr    #
+#    Updated: 2020/12/28 16:24:56 by ichougra         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ SRCS_NAME		= 	main.c ft_loop.c ft_set_color.c ft_move.c\
 					ft_config_struct.c ft_sprite_lst.c ft_calloc.c\
 					ft_bzero.c ft_isdigit.c ft_memcpy.c\
 					ft_split.c ft_memset.c ft_strcmp.c ft_strcount_char.c\
-					ft_strncmp.c get_next_line.c ft_utils.c error.c
+					ft_strncmp.c get_next_line.c ft_utils.c error.c ft_config_struct2.c\
+					ft_verif3.c\
+
 
 OBJS			= 	${SRCS:.c=.o}
 
@@ -40,9 +42,9 @@ CFLAGS 			= 	-Wall -Wextra -Werror -g3
 GFLAGS 			=	-Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit\
 					-I./includes\
 
-GFLAGS2 		=	 -g3\
+GFLAGS2 		=	 -Wall -Wextra -Werror -g3\
 					-I./includes\
-#-Wall -Wextra -Werror 
+
 SRCS 			= 	$(addprefix $(SRC_PATH)/,$(SRCS_NAME))
 
 all:				$(NAME)

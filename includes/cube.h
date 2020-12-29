@@ -6,7 +6,7 @@
 /*   By: ichougra <ichougra@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 12:46:47 by ichougra          #+#    #+#             */
-/*   Updated: 2020/12/18 12:56:13 by ichougra         ###   ########lyon.fr   */
+/*   Updated: 2020/12/29 08:03:01 by ichougra         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,5 +273,12 @@ void				ft_smile(t_file *file);
 int					ft_snakeoil(t_file *file);
 int					ft_resochr(char *line, t_file *var);
 int					error_main(int ac, char **av);
+void				chang_xy(t_file *file);
+int					compt_cara(char *line);
+int					check_f_line(t_file *file);
+int					check_l_line(t_file *file);
+int					search_one(t_file *file, int x, int y);
+int					check_line(t_file *file);
+int					skip_space(char *line);
 
 #endif

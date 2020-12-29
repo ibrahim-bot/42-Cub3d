@@ -6,7 +6,7 @@
 /*   By: ichougra <ichougra@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:50:46 by ichougra          #+#    #+#             */
-/*   Updated: 2020/12/18 13:02:12 by ichougra         ###   ########lyon.fr   */
+/*   Updated: 2020/12/28 16:28:05 by ichougra         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,25 +71,26 @@ int			ft_verif_color_path(t_file *file)
 static int	ft_verif_map2(t_file *file)
 {
 	int i;
+	int y;
 
 	i = -1;
+	y = 0;
 	while (F->M->map[++i])
 	{
-		if (!(F->M->map[i][0] == '1' && F->M->map[i][ft_strlen(F->M->map[i]) - 1] == '1'))
+		if (i == 0)
 		{
-			ft_free_fil(F);
-			ft_printf("Error: The map is not closed.\n");
-			return (0);
+			if (check_f_line(F) == 84)
+				return (0);
 		}
-	}
-	i = -1;
-	while (F->M->map[F->M->height - 2][++i])
-	{
-		if (F->M->map[F->M->height - 2][i] != '1')
+		else if (i == F->M->height - 2)
 		{
-			ft_free_fil(F);
-			ft_printf("Error: Pas de contour de map SOUTH.\n");
-			return (0);
+			if (check_l_line(F) == 84)
+				return (0);
+		}
+		else
+		{
+			if (check_line(F) == 84)
+				return (0);
 		}
 	}
 	return (1);
@@ -100,7 +101,7 @@ int			ft_verif_map(t_file *file)
 	if (!F->PL->direction)
 	{
 		ft_free_fil(F);
-		ft_printf("Error: Missing starting point. (F->PLPoint).\n");
+		ft_printf("Error: Missing starting point.\n");
 		return (0);
 	}
 	if (F->M->height < 3 || F->M->width < 3)
@@ -122,16 +123,15 @@ int			ft_start_verif(t_file *file, char **av)
 	&& ft_init_player(F) && ft_init_ray(F) && ft_init_key(F)
 	&& ft_init_draw(F) && ft_init_draw_sprite(F) && ft_init_imgw(F)
 	&& ft_init_hubdraw(F)))
-	 	return (0);
+		return (0);
 	if (!(ft_parse_cube(av[1], F)))
-	 	return (0);
+		return (0);
 	if (!(F->M->map = ft_split(F->M->mapchar, '\n')))
 	{
 		ft_free_fil(F);
 		ft_printf("Error: Map not found.\n");
 		return (0);
 	}
-	// ft_printf("%s\n", F->M->map[0]);
 	if (!(ft_verif_color_path(F) && ft_verif_map(F) && ft_verif_reso(F)
 	&& ft_verif_path_img(F)))
 		return (0);

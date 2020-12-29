@@ -6,13 +6,13 @@
 /*   By: ichougra <ichougra@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 12:54:35 by ichougra          #+#    #+#             */
-/*   Updated: 2020/12/18 12:55:27 by ichougra         ###   ########lyon.fr   */
+/*   Updated: 2020/12/29 08:02:41 by ichougra         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int			ft_error_parse(t_file *file, int fd, char *line)
+int	ft_error_parse(t_file *file, int fd, char *line)
 {
 	if (fd > 0)
 	{
@@ -25,7 +25,7 @@ int			ft_error_parse(t_file *file, int fd, char *line)
 	return (0);
 }
 
-int			error_main(int ac, char **av)
+int	error_main(int ac, char **av)
 {
 	if (ac < 2 || (ac > 2 && ft_strcmp(&av[2][0], "--save")))
 	{
@@ -37,4 +37,14 @@ int			error_main(int ac, char **av)
 		return (1);
 	}
 	return (0);
+}
+
+int	skip_space(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i] == ' ')
+		i++;
+	return (i);
 }

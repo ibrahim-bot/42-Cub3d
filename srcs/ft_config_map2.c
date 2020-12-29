@@ -6,7 +6,7 @@
 /*   By: ichougra <ichougra@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:48:12 by ichougra          #+#    #+#             */
-/*   Updated: 2020/12/18 12:52:06 by ichougra         ###   ########lyon.fr   */
+/*   Updated: 2020/12/28 15:08:57 by ichougra         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			ft_join_charmap(t_file *file, char *line, int i, int nb)
 {
 	char	*join;
 
-	if (!(join = malloc(sizeof(char) * nb + 1)))
+	if (!(join = malloc(sizeof(char) * 1000)))
 	{
 		ft_printf("Error: Malloc failed.\n");
 		return (0);
@@ -38,8 +38,6 @@ int			ft_join_charmap(t_file *file, char *line, int i, int nb)
 	nb = -1;
 	while (line[i] != '\0')
 	{
-		while (line[i] == ' ')
-			i++;
 		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
 		|| line[i] == 'W')
 			if (!(ft_verif_player_config(F, line[i], (nb + 1))))
@@ -70,8 +68,6 @@ int			ft_set_line(t_file *file, char *line, int nb, int i)
 			return (0);
 		}
 	}
-	ft_printf("%s\n",line);
-	ft_printf("%d\n", nb);
 	if (nb == 0)
 		return (1);
 	else
@@ -80,7 +76,7 @@ int			ft_set_line(t_file *file, char *line, int nb, int i)
 	return (0);
 }
 
-int			 ft_config_map2(int i, char *line, t_file *file)
+int			ft_config_map2(int i, char *line, t_file *file)
 {
 	if (!(i = ft_set_line(F, line, 0, 0)))
 	{

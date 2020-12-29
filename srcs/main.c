@@ -6,13 +6,13 @@
 /*   By: ichougra <ichougra@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:43:51 by ichougra          #+#    #+#             */
-/*   Updated: 2020/12/18 13:00:07 by ichougra         ###   ########lyon.fr   */
+/*   Updated: 2020/12/29 08:02:27 by ichougra         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-static int	ft_parse_cube2(t_file *file, char *line, int i, int *j)
+int			test_func(t_file *file, char *line, int i, int *j)
 {
 	if (!ft_strncmp(&line[i], "C ", 2))
 		ft_colorchr(&line[i], F, 1, 1);
@@ -36,6 +36,13 @@ static int	ft_parse_cube2(t_file *file, char *line, int i, int *j)
 	}
 	else if (line[i] == '1')
 		*j = 1;
+	return (1);
+}
+
+static int	ft_parse_cube2(t_file *file, char *line, int i, int *j)
+{
+	if (test_func(F, line, i, j) == 0)
+		return (0);
 	if (line[0] == '\0' && *j == 1)
 	{
 		free(line);
@@ -45,21 +52,19 @@ static int	ft_parse_cube2(t_file *file, char *line, int i, int *j)
 	return (1);
 }
 
-int			 ft_parse_cube(char *fichier, t_file *file)
+int			ft_parse_cube(char *fichier, t_file *file)
 {
-	char	*line;
-	int		i;
-	int		fd;
-	static int j;
+	char		*line;
+	int			i;
+	int			fd;
+	static int	j;
 
 	j = 0;
 	if ((fd = open(fichier, O_RDONLY)) < 0)
 		ft_printf("Error open(): the file does not exist.\n");
 	while ((get_next_line(fd, &line) > 0))
 	{
-		i = 0;
-		while (line[i] == ' ')
-			i++;
+		i = skip_space(line);
 		if (!ft_strncmp(&line[i], "R ", 2))
 		{
 			if (ft_resochr(&line[i], F) == 84)

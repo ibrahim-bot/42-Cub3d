@@ -6,37 +6,11 @@
 /*   By: ichougra <ichougra@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:47:40 by ichougra          #+#    #+#             */
-/*   Updated: 2020/12/17 17:11:51 by ichougra         ###   ########lyon.fr   */
+/*   Updated: 2020/12/28 15:18:15 by ichougra         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-void	chang_xy(t_file *file)
-{
-	if (F->axe_x > 2560)
-		F->axe_x = 2560;
-	if (F->axe_y > 1400)
-		F->axe_y = 1400;
-}
-
-int		compt_cara(char *line)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (line[i])
-	{
-		if (line[i] == ' ' && line[i + 1] != '\0' && line[i + 1] != ' ')
-			j++;
-		i++;
-	}
-	if (j != 2)
-		return (84);
-	return (0);
-}
 
 int		verif_r(char *line, t_file *var)
 {
@@ -116,11 +90,12 @@ int		ft_colorchrs(char *line, t_file *file, int p, int i)
 		i++;
 	return (i);
 }
+
 void	ft_colorchr(char *line, t_file *file, int p, int i)
 {
-	if (ft_colorchrs(line, file, p , i) == 84)
+	if (ft_colorchrs(line, file, p, i) == 84)
 		return ;
-	i = ft_colorchrs(line, file, p , i);
+	i = ft_colorchrs(line, file, p, i);
 	while (line[i] == ' ')
 		i++;
 	if (line[i] != ',')
@@ -156,5 +131,5 @@ void	ft_pathchr(char *line, t_file *file, int p)
 	p == 1 ? (F->PA->north = ft_substr(line, j, i)) : 0;
 	p == 2 ? (F->PA->west = ft_substr(line, j, i)) : 0;
 	p == 3 ? (F->PA->east = ft_substr(line, j, i)) : 0;
-	p == 4 ? (F->PA->sprite = ft_substr(line, j, i)) : 0;	
+	p == 4 ? (F->PA->sprite = ft_substr(line, j, i)) : 0;
 }

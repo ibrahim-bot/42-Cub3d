@@ -6,20 +6,18 @@
 /*   By: ichougra <ichougra@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:47:54 by ichougra          #+#    #+#             */
-/*   Updated: 2020/12/18 13:28:21 by ichougra         ###   ########lyon.fr   */
+/*   Updated: 2020/12/28 15:07:39 by ichougra         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int			ft_first_line_map(char *line, int i, int nb, t_file *file)
+int	ft_first_line_map(char *line, int i, int nb, t_file *file)
 {
 	F->M->height += 1;
 	while (line[i] != '\0')
 	{
-		while (line[i] == ' ')
-			i++;
-		if (line[i] == '1')
+		if (line[i] == '1' || line[i] == ' ')
 		{
 			nb++;
 			i++;
@@ -31,11 +29,10 @@ int			ft_first_line_map(char *line, int i, int nb, t_file *file)
 			return (0);
 		}
 	}
-	free(line);
 	return (nb);
 }
 
-int			ft_config_map(int fd, char *line, t_file *file)
+int	ft_config_map(int fd, char *line, t_file *file)
 {
 	int i;
 
@@ -45,8 +42,9 @@ int			ft_config_map(int fd, char *line, t_file *file)
 	{
 		return (0);
 	}
-	ft_memset(F->M->mapchar, '1', F->M->width + 1);
+	memcpy(F->M->mapchar, line, F->M->width + 1);
 	F->M->mapchar[F->M->width] = '\n';
+	free(line);
 	while (get_next_line(fd, &line) >= 0)
 	{
 		i = ft_config_map2(i, line, file);

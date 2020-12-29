@@ -6,13 +6,13 @@
 /*   By: ichougra <ichougra@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:50:53 by ichougra          #+#    #+#             */
-/*   Updated: 2020/12/18 10:41:08 by ichougra         ###   ########lyon.fr   */
+/*   Updated: 2020/12/28 16:28:38 by ichougra         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int			ft_verif_reso(t_file *file)
+int	ft_verif_reso(t_file *file)
 {
 	if ((F->axe_x <= 0 || F->axe_x <= 0))
 	{
@@ -23,8 +23,8 @@ int			ft_verif_reso(t_file *file)
 	return (1);
 }
 
-int			ft_verif_path_img(t_file *file)
-{	
+int	ft_verif_path_img(t_file *file)
+{
 	if (open(F->PA->east, O_RDONLY) < 0 || open(F->PA->north, O_RDONLY) < 0 ||
 		open(F->PA->west, O_RDONLY) < 0 || open(F->PA->south, O_RDONLY) < 0 ||
 		open(F->PA->sprite, O_RDONLY) < 0
